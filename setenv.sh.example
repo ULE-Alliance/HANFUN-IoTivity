@@ -1,0 +1,4 @@
+# set the LD_LIBRARY_PATH so it points to the iotivity and hanfun libraries
+LD_LIBRARY_PATH="/home/username/iotivity-hanfun-bridge/extlibs/iotivity/out/linux/x86_64/release"
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/home/username/iotivity-hanfun-bridge/extlibs/libuv/.libs"
+export LD_LIBRARY_PATH

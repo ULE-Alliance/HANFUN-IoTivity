@@ -1,0 +1,15 @@
+Import('env')
+
+if env['TARGET_OS'] == 'linux':
+  env_tools = env.Clone()
+  env_tools.AppendUnique(CPPPATH = ['${IOTIVITY_BASE}/resource/csdk/stack/include/internal'])
+  env_tools.AppendUnique(LIBS = ['octbstack',
+                                 'connectivity_abstraction',
+                                 'coap'])
+  tools_bins = [
+    env_tools.Program('OCClient', ['occlient.cpp',
+                                   '${IOTIVITY_BASE}/extlibs/cjson/cJSON.c',
+                                   '${IOTIVITY_BASE}/extlibs/tinycbor/tinycbor/src/cbortojson.c',
+                                   '${IOTIVITY_BASE}/extlibs/tinycbor/tinycbor/src/cborpretty.c'])]
+  
+  env.Install('#/${BUILD_DIR}/bin', tools_bins)

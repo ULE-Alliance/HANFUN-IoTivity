@@ -1,0 +1,3 @@
+# set the LD_LIBRARY_PATH so it points to the iotivity and hanfun libraries
+LD_LIBRARY_PATH="/home/username/iotivity-hanfun-bridge/lib"
+export LD_LIBRARY_PATH

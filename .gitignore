@@ -1,0 +1,8 @@
+extlibs/ule-starterkit
+out/
+*.dat
+*.db
+setenv.sh
+.sconsign.dblite
+*.json
+*.7z

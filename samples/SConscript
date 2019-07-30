@@ -1,0 +1,27 @@
+Import('env')
+Import('iotivity_resource_inc_paths')
+Import('hanfunplugin_lib')
+
+env_bridge = env.Clone()
+bridge_cpp = ['log.cpp',
+              'plugin.cpp',
+              'hanfun_bridge.cpp']
+manager_cpp = ['plugin_manager.cpp']
+env_bridge.AppendUnique(LIBS = [hanfunplugin_lib])
+if env['TARGET_OS'] == 'linux':
+  env_bridge.AppendUnique(LIBS = [
+    'c_common',
+    'crypto',
+    'hanfun',
+    'octbstack',
+    'resource_directory',
+    'uv'
+    ])
+  if env['SECURED'] == '1':
+    env_bridge.AppendUnique(LIBS = ['ocpmapi'])
+
+samples_bins = [env_bridge.Program('HanFunBridge', bridge_cpp)]
+if env['TARGET_OS'] == 'linux':
+  samples_bins += [env_bridge.Program('PluginManager', manager_cpp)]
+
+env.Install('#/${BUILD_DIR}/bin', samples_bins)

@@ -1,0 +1,24 @@
+Import('env')
+
+# build static library
+iotivity_hanfun_bridge_cpp = ['bridge.cpp',
+                              'device_information.cpp',
+                              'device_resource.cpp',
+                              'han_client.cpp',
+                              'hash.cpp',
+                              'interfaces.cpp',
+                              'introspection.cpp',
+                              'introspection_parse.cpp',
+                              'platform_resource.cpp',
+                              'presence.cpp',
+                              'registration_resource.cpp',
+                              'resource.cpp',
+                              'secure_mode_resource.cpp',
+                              'security.cpp',
+                              'transport.cpp',
+                              'virtual_ocf_device.cpp',
+                              'virtual_resource.cpp',
+                              '${IOTIVITY_BASE}/extlibs/tinycbor/tinycbor/src/cborencoder.c']
+hanfunplugin_lib = env.StaticLibrary('hanfunplugin', iotivity_hanfun_bridge_cpp)
+
+Return('hanfunplugin_lib')
