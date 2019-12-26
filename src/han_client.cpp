@@ -132,8 +132,8 @@ struct Message
     {
       size_t command_size = strlen(command);
       strncpy(buffer + offset, command, command_size);
-      buffer[offset + command_size + 1] = '\r';
-      buffer[offset + command_size + 2] = '\n';
+      buffer[offset + command_size] = '\r';
+      buffer[offset + command_size + 1] = '\n';
     }
     size_t parameters_pack_size()
     {
